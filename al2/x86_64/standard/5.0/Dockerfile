@@ -94,6 +94,9 @@ FROM tools AS runtimes_1
 
 #****************      JAVA     ****************************************************
 
+RUN curl -sS https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.2.0/graalvm-ce-java17-linux-amd64-22.2.0.tar.gz | \
+tar xz -C /usr/local/bin
+
 ENV JAVA_17_HOME="/usr/lib/jvm/java-17-amazon-corretto.x86_64" \
     JDK_17_HOME="/usr/lib/jvm/java-17-amazon-corretto.x86_64" \
     JRE_17_HOME="/usr/lib/jvm/java-17-amazon-corretto.x86_64" \
