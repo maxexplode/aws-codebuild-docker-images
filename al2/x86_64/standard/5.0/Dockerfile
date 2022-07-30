@@ -206,7 +206,7 @@ RUN set -ex \
 
 
 #===================END of runtimes_3 ==============
-FROM runtimes_3 AS al2_v3
+FROM runtimes_2 AS al2_v3
 
 # Configure SSH
 COPY ssh_config /root/.ssh/config
