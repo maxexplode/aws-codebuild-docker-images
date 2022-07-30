@@ -205,15 +205,6 @@ RUN set -ex \
     && docker-compose version
 
 
-#=======================End of layer: runtimes_2  =================
-FROM runtimes_2 AS runtimes_3
-
-# Install GitVersion
-ENV GITVERSION_VERSION="5.3.5"
-RUN set -ex \
-    && dotnet tool install --global GitVersion.Tool --version $GITVERSION_VERSION \
-    && ln -s ~/.dotnet/tools/dotnet-gitversion /usr/local/bin/gitversion
-
 #===================END of runtimes_3 ==============
 FROM runtimes_3 AS al2_v3
 
