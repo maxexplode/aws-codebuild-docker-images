@@ -100,9 +100,9 @@ RUN set -ex \
     && tar zxvf graalvm-ce-java17-linux-amd64-22.2.0.tar.gz -C /usr/lib/jvm \
     && rm graalvm-ce-java17-linux-amd64-22.2.0.tar.gz
 
-ENV JAVA_17_HOME="/usr/lib/jvm/graalvm-ce-java17-linux-amd64-22.2.0" \
-    JDK_17_HOME="/usr/lib/jvm/graalvm-ce-java17-linux-amd64-22.2.0" \
-    JRE_17_HOME="/usr/lib/jvm/graalvm-ce-java17-linux-amd64-22.2.0" \
+ENV JAVA_17_HOME="/usr/lib/jvm/graalvm-ce-java17-22.2.0" \
+    JDK_17_HOME="/usr/lib/jvm/graalvm-ce-java17-22.2.0" \
+    JRE_17_HOME="/usr/lib/jvm/graalvm-ce-java17-22.2.0" \
     ANT_VERSION=1.10.12 \
     MAVEN_HOME="/opt/maven" \
     MAVEN_VERSION=3.8.6 \
