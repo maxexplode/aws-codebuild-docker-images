@@ -96,9 +96,8 @@ FROM tools AS runtimes_1
 
 RUN set -ex \ 
     && wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.2.0/graalvm-ce-java17-linux-amd64-22.2.0.tar.gz \ 
-    && cp graalvm-ce-java17-linux-amd64-22.2.0.tar.gz /usr/lib/jvm \
-    && rm graalvm-ce-java17-linux-amd64-22.2.0.tar.gz \
-    && tar -zxvf /usr/lib/jvm/graalvm-ce-java17-linux-amd64-22.2.0.tar.gz
+    && tar zxvf graalvm-ce-java17-linux-amd64-22.2.0.tar.gz -C /usr/lib/jvm \
+    && rm graalvm-ce-java17-linux-amd64-22.2.0.tar.gz
 
 ENV JAVA_17_HOME="/usr/lib/jvm/graalvm-ce-java17-linux-amd64-22.2.0" \
     JDK_17_HOME="/usr/lib/jvm/graalvm-ce-java17-linux-amd64-22.2.0" \
