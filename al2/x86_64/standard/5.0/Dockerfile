@@ -124,13 +124,13 @@ ENV JAVA_HOME="$JAVA_17_HOME" \
 RUN set -x \
     # Install Amazon Corretto 17
     # && yum install -y -q java-17-amazon-corretto \
-    && update-ca-trust \
-    && for tool_path in $JAVA_HOME/bin/*; do \
-          tool=`basename $tool_path`; \
-          update-alternatives --install /usr/bin/$tool $tool $tool_path 10000; \
-          update-alternatives --set $tool $tool_path; \
-        done \
-    && rm $JAVA_HOME/lib/security/cacerts && ln -s /etc/pki/java/cacerts $JAVA_HOME/lib/security/cacerts \
+    # && update-ca-trust \
+    # && for tool_path in $JAVA_HOME/bin/*; do \
+    #       tool=`basename $tool_path`; \
+    #       update-alternatives --install /usr/bin/$tool $tool $tool_path 10000; \
+    #       update-alternatives --set $tool $tool_path; \
+    #     done \
+    # && rm $JAVA_HOME/lib/security/cacerts && ln -s /etc/pki/java/cacerts $JAVA_HOME/lib/security/cacerts \
     # Install Ant
     && curl -LSso /var/tmp/apache-ant-$ANT_VERSION-bin.tar.gz https://archive.apache.org/dist/ant/binaries/apache-ant-$ANT_VERSION-bin.tar.gz  \
     && echo "$ANT_DOWNLOAD_SHA512 /var/tmp/apache-ant-$ANT_VERSION-bin.tar.gz" | sha512sum -c - \
