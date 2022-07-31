@@ -131,6 +131,9 @@ RUN set -x \
           update-alternatives --set $tool $tool_path; \
         done \
     && rm $JAVA_HOME/lib/security/cacerts && ln -s /etc/pki/java/cacerts $JAVA_HOME/lib/security/cacerts \
+    && gu install native-image \
+    && yum install gcc glibc-devel zlib-devel \
+    && yum install gcc glibc-devel zlib-devel \
     # Install Ant
     && curl -LSso /var/tmp/apache-ant-$ANT_VERSION-bin.tar.gz https://archive.apache.org/dist/ant/binaries/apache-ant-$ANT_VERSION-bin.tar.gz  \
     && echo "$ANT_DOWNLOAD_SHA512 /var/tmp/apache-ant-$ANT_VERSION-bin.tar.gz" | sha512sum -c - \
