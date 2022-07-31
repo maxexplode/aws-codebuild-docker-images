@@ -96,11 +96,12 @@ FROM tools AS runtimes_1
 
 RUN set -ex \ 
     && wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.2.0/graalvm-ce-java17-linux-amd64-22.2.0.tar.gz \ 
-    && cp graalvm-ce-java17-linux-amd64-22.2.0.tar.gz /usr/lib/jvm
+    && cp graalvm-ce-java17-linux-amd64-22.2.0.tar.gz /usr/lib/jvm \
+    && tar -xz graalvm-ce-java17-linux-amd64-22.2.0.tar.gz
 
-ENV JAVA_17_HOME="/usr/lib/jvm/java-17-amazon-corretto.x86_64" \
-    JDK_17_HOME="/usr/lib/jvm/java-17-amazon-corretto.x86_64" \
-    JRE_17_HOME="/usr/lib/jvm/java-17-amazon-corretto.x86_64" \
+ENV JAVA_17_HOME="/usr/lib/jvm/graalvm-ce-java17-linux-amd64-22.2.0" \
+    JDK_17_HOME="/usr/lib/jvm/graalvm-ce-java17-linux-amd64-22.2.0" \
+    JRE_17_HOME="/usr/lib/jvm/graalvm-ce-java17-linux-amd64-22.2.0" \
     ANT_VERSION=1.10.12 \
     MAVEN_HOME="/opt/maven" \
     MAVEN_VERSION=3.8.6 \
@@ -121,7 +122,7 @@ ENV JAVA_HOME="$JAVA_17_HOME" \
 
 RUN set -x \
     # Install Amazon Corretto 17
-    && yum install -y -q java-17-amazon-corretto \
+    # && yum install -y -q java-17-amazon-corretto \
     && update-ca-trust \
     && for tool_path in $JAVA_HOME/bin/*; do \
           tool=`basename $tool_path`; \
