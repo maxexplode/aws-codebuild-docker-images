@@ -3,9 +3,9 @@ version: 0.1
 runtimes:
   java:
     versions:
-      corretto17:
+      graalvm22.2.0:
         commands:
-          - echo "Installing corretto(OpenJDK) version 17 ..."
+          - echo "Installing graalvm(OpenJDK17) version 22.2.0 ..."
 
           - export JAVA_HOME="$JAVA_17_HOME"
 
