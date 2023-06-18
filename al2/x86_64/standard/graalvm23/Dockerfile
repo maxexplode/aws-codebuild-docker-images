@@ -9,7 +9,7 @@
 # This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied.
 # See the License for the specific language governing permissions and limitations under the License.
 
-FROM ghcr.io/graalvm/jdk:ol8-java17-22.3.1
+FROM amazonlinux
 
 # Install git, SSH, and other utilities
 RUN set -ex \
@@ -30,6 +30,18 @@ ARG MAVEN_VERSION=3.9.1
 ARG MAVEN_CONFIG_HOME="/root/.m2"
 ARG GRADLE_VERSION=8.1.1
 ARG GRADLE_PATH="/usr/local/gradle"
+
+# Set the desired GraalVM version
+ARG GRAALVM_VERSION=20.0.1
+
+# Download and install GraalVM
+RUN curl -L -o graalvm.tar.gz https://github.com/graalvm/graalvm-ce-builds/releases/download/v${GRAALVM_VERSION}/graalvm-ce-java11-linux-amd64-${GRAALVM_VERSION}.tar.gz \
+    && tar -xzf graalvm.tar.gz -C /usr/lib/jvm \
+    && mv /usr/lib/jvm/graalvm-ce-java11-${GRAALVM_VERSION} /usr/lib/jvm/graalvm \
+    && rm graalvm.tar.gz
+
+ENV JAVA_HOME /usr/lib/jvm/graalvm
+ENV PATH $JAVA_HOME/bin:$PATH
 
 RUN set -ex \
     # Install Maven
