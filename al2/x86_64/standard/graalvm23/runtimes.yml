@@ -1,0 +1,8 @@
+version: 0.1
+
+runtimes:
+  java:
+    versions:
+      graalvm:
+        commands:
+          - echo "Installing GraalVM(OpenJDK) version 17 ..."
